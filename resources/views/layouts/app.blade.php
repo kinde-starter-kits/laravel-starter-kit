@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ config('app.name', 'Laravel') }} - @yield('title', 'Kinde Authentication')</title>
-    
+
     @vite(['resources/css/app.css', 'resources/css/kinde.css', 'resources/js/app.js'])
 </head>
 <body>
@@ -12,12 +12,6 @@
         <nav class="nav container">
             <h1 class="text-display-3">KindeAuth</h1>
             <div>
-                @php
-                    $kindeService = app(\App\Services\KindeService::class);
-                    $isAuthenticated = $kindeService->isAuthenticated();
-                    $authUser = $isAuthenticated ? $kindeService->getUser() : null;
-                @endphp
-                
                 @if(!$isAuthenticated)
                     <a href="{{ route('auth.login') }}" class="btn btn-ghost sign-in-btn">
                         Sign in
@@ -54,7 +48,7 @@
                 </div>
             </div>
         @endif
-        
+
         @if(session('error'))
             <div class="container">
                 <div style="margin-bottom: 1rem; padding: 1rem; background: #fee2e2; color: #991b1b; border: 1px solid #fca5a5; border-radius: 0.5rem;">
@@ -62,7 +56,7 @@
                 </div>
             </div>
         @endif
-        
+
         @yield('content')
     </main>
 
@@ -78,4 +72,4 @@
         </div>
     </footer>
 </body>
-</html> 
+</html>

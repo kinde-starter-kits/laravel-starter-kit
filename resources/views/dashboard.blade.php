@@ -11,15 +11,10 @@
             Build the important stuff.
         </p>
     </div>
-    
+
     <section class="next-steps-section">
         <h2 class="text-heading-1">Next steps for you</h2>
-        
-        @php
-            $kindeService = app(\App\Services\KindeService::class);
-            $authUser = $kindeService->getUser();
-        @endphp
-        
+
         @if($authUser)
             <div style="margin-top: var(--g-spacing-large); padding: var(--g-spacing-large); background: var(--g-color-grey-100); border-radius: var(--g-border-radius-base);">
                 <h3 class="text-heading-2" style="margin-bottom: var(--g-spacing-base);">User Profile</h3>
@@ -41,4 +36,4 @@
         @endif
     </section>
 </div>
-@endsection 
+@endsection
