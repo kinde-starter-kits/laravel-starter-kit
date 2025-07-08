@@ -9,22 +9,22 @@ use Illuminate\Routing\Router;
 
 /**
  * KindeServiceProvider - Service provider for Kinde authentication integration
- * 
+ *
  * This service provider handles the registration and configuration of Kinde authentication
  * services within the Laravel application.
- * 
+ *
  * @package App\Providers
  */
 class KindeServiceProvider extends ServiceProvider
 {
     /**
      * Register any application services
-     * 
+     *
      * This method registers the KindeService as a singleton in Laravel's service container.
      * Using singleton ensures that the same instance is used throughout the request lifecycle,
      * which is important for maintaining authentication state and avoiding unnecessary
      * re-initialization of the Kinde PHP SDK.
-     * 
+     *
      * @return void
      */
     public function register(): void
@@ -36,7 +36,7 @@ class KindeServiceProvider extends ServiceProvider
 
     /**
      * Bootstrap any application services
-     * 
+     *
      * This method is called after all providers have been registered and performs
      * the following bootstrap operations:
      * 1. Registers the 'kinde.auth' middleware alias for route protection
@@ -54,10 +54,10 @@ class KindeServiceProvider extends ServiceProvider
 
     /**
      * Validate that required Kinde configuration is present
-     * 
+     *
      * This method checks that all required configuration keys are present and not empty.
-     * 
-     * 
+     *
+     *
      * @return void
      * @throws \Exception If any required configuration key is missing or empty
      */
@@ -77,4 +77,4 @@ class KindeServiceProvider extends ServiceProvider
             }
         }
     }
-} 
+}

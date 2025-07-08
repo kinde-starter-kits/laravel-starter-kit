@@ -1,4 +1,9 @@
 <?php
+/**
+ * Application logging configuration.
+ *
+ * @copyright
+ */
 
 use Monolog\Handler\NullHandler;
 use Monolog\Handler\StreamHandler;
@@ -89,7 +94,8 @@ return [
             'handler_with' => [
                 'host' => env('PAPERTRAIL_URL'),
                 'port' => env('PAPERTRAIL_PORT'),
-                'connectionString' => 'tls://'.env('PAPERTRAIL_URL').':'.env('PAPERTRAIL_PORT'),
+                // TLS is enabled automatically on port 514 for Papertrail;
+                // no extra constructor arg is required.
             ],
             'processors' => [PsrLogMessageProcessor::class],
         ],

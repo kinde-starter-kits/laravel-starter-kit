@@ -9,11 +9,11 @@ use Exception;
 
 /**
  * KindeService - Laravel wrapper for Kinde PHP SDK
- * 
+ *
  * This service provides a simplified interface to the Kinde PHP SDK for Laravel applications.
  * It handles the most common authentication operations while providing access to the full
  * SDK when needed for advanced use cases.
- * 
+ *
  * Key Features:
  * - User authentication status checking
  * - User profile retrieval
@@ -21,8 +21,8 @@ use Exception;
  * - Logout handling
  * - Permission checking
  * - Direct SDK access for advanced operations
- * 
- * 
+ *
+ *
  * @package App\Services
  */
 class KindeService
@@ -31,7 +31,7 @@ class KindeService
      * The Kinde SDK client instance
      */
     protected KindeClientSDK $kindeClient;
-    
+
     /**
      * The Kinde SDK configuration instance
      */
@@ -39,10 +39,10 @@ class KindeService
 
     /**
      * Create a new KindeService instance
-     * 
+     *
      * Initializes the Kinde SDK with configuration from Laravel's config system.
      * The configuration is read from config/services.php under the 'kinde' key.
-     * 
+     *
      * @throws Exception If required configuration is missing
      */
     public function __construct()
@@ -65,10 +65,10 @@ class KindeService
 
     /**
      * Check if user is authenticated
-     * 
+     *
      * Determines whether the current user has a valid authentication session
      * with Kinde. This checks for the presence and validity of access tokens.
-     * 
+     *
      * @return bool True if user is authenticated, false otherwise
      */
     public function isAuthenticated(): bool
@@ -78,11 +78,11 @@ class KindeService
 
     /**
      * Get the authenticated user profile
-     * 
+     *
      * Retrieves the profile information for the currently authenticated user.
      * Returns null if the user is not authenticated.
-     * 
-     * 
+     *
+     *
      * @return object|null User profile object or null if not authenticated
      */
     public function getUser(): ?object
@@ -93,12 +93,12 @@ class KindeService
 
         try {
             $userData = $this->kindeClient->getUserDetails();
-            
+
             // Convert array to object for consistent access
             if (is_array($userData)) {
                 $userData = (object) $userData;
             }
-            
+
             return $userData;
         } catch (Exception $e) {
             return null;
@@ -107,11 +107,11 @@ class KindeService
 
     /**
      * Get login URL
-     * 
+     *
      * Generates a URL to redirect users to Kinde's hosted login page.
      * After successful authentication, users will be redirected back to
      * the configured callback URL.
-     * 
+     *
      * @param array $additionalParams Optional additional parameters to include in the login URL
      * @return string The login URL to redirect users to
      */
@@ -123,11 +123,11 @@ class KindeService
 
     /**
      * Get register URL
-     * 
+     *
      * Generates a URL to redirect users to Kinde's hosted registration page.
      * After successful registration, users will be redirected back to
      * the configured callback URL.
-     * 
+     *
      * @param array $additionalParams Optional additional parameters to include in the registration URL
      * @return string The registration URL to redirect users to
      */
@@ -139,14 +139,14 @@ class KindeService
 
     /**
      * Perform logout
-     * 
+     *
      * Logs the user out of both the application and Kinde.
      * This method will redirect to Kinde's logout endpoint, which will
      * clear the user's session and then redirect to the configured
      * post-logout URL.
-     * 
+     *
      * Note: This method performs a redirect and does not return.
-     * 
+     *
      * @return void
      */
     public function logout(): void
@@ -156,11 +156,11 @@ class KindeService
 
     /**
      * Handle the OAuth callback
-     * 
+     *
      * Processes the OAuth2 authorization code received from Kinde's callback
      * and exchanges it for access and ID tokens. This method should be called
      * in your callback route handler.
-     * 
+     *
      * @return bool True if the callback was handled successfully and user is now authenticated
      */
     public function handleCallback(): bool
@@ -175,12 +175,12 @@ class KindeService
 
     /**
      * Check if user has a specific permission
-     * 
+     *
      * Determines whether the currently authenticated user has been granted
      * a specific permission. Returns false if the user is not authenticated
      * or if the permission check fails.
-     * 
-     * 
+     *
+     *
      * @param string $permission The permission to check (e.g., 'create:posts')
      * @return bool True if user has the permission, false otherwise
      */
@@ -200,19 +200,19 @@ class KindeService
 
     /**
      * Get the configured Kinde client for direct SDK access
-     * 
+     *
      * Returns the underlying Kinde PHP SDK client for advanced operations
      * not covered by this service. The client is already configured
      * with your application settings.
-     * 
+     *
      * Use this when you need functionality listed in the Kinde PHP SDK documentation.
      * https://docs.kinde.com/developer-tools/sdks/backend/php-sdk/#kindesdk-methods
-     * 
-     * 
+     *
+     *
      * @return KindeClientSDK The configured Kinde PHP SDK client
      */
     public function client(): KindeClientSDK
     {
         return $this->kindeClient;
     }
-} 
+}

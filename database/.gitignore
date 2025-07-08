@@ -1,1 +1,11 @@
+# SQLite database files
 *.sqlite*
+*.db
+*.sqlite3
+
+# Database dumps and backups
+*.sql
+*.dump
+
+# Database connection files (if any)
+*.dsn

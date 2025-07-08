@@ -9,20 +9,20 @@ use Symfony\Component\HttpFoundation\Response;
 
 /**
  * KindeAuth Middleware
- * 
+ *
  * This middleware protects routes by ensuring users are authenticated with Kinde.
  * It provides different behavior for web and API requests:
- * 
+ *
  * - Web requests: Redirects to login page and stores intended URL
  * - API requests: Returns 401 JSON response
- * 
+ *
  * Usage:
  * - Apply to routes: Route::middleware('kinde.auth')
  * - Apply to controllers: $this->middleware('kinde.auth')
  * - Apply to route groups: Route::middleware('kinde.auth')->group(...)
- * 
+ *
  * The middleware is automatically registered as 'kinde.auth' in KindeServiceProvider.
- * 
+ *
  * @package App\Http\Middleware
  */
 class KindeAuth
@@ -34,7 +34,7 @@ class KindeAuth
 
     /**
      * Create a new KindeAuth middleware instance
-     * 
+     *
      * @param KindeService $kindeService The Kinde service for authentication operations
      */
     public function __construct(KindeService $kindeService)
@@ -44,17 +44,17 @@ class KindeAuth
 
     /**
      * Handle an incoming request
-     * 
+     *
      * This method checks if the user is authenticated and handles different
      * scenarios based on the request type:
-     * 
+     *
      * 1. If authenticated: Allow request to continue
-     * 2. If not authenticated (web request): 
+     * 2. If not authenticated (web request):
      *    - Store intended URL for post-login redirect
      *    - Redirect to login page with error message
      * 3. If not authenticated (API request):
      *    - Return 401 JSON response
-     * 
+     *
      * The intended URL is stored in the session and will be used by the
      * authentication flow to redirect users back to their original destination
      * after successful login.
@@ -83,4 +83,4 @@ class KindeAuth
 
         return $next($request);
     }
-} 
+}
