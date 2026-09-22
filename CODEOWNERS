@@ -1,2 +1,5 @@
 * @kinde-starter-kits/giants-kinde
-
+composer.json @kinde-starter-kits/sdk-engineers
+**/composer.json @kinde-starter-kits/sdk-engineers
+composer.lock @kinde-starter-kits/sdk-engineers
+**/composer.lock @kinde-starter-kits/sdk-engineers
