@@ -1,0 +1,25 @@
+# Laravel Starter Kit - Robots.txt Configuration
+#
+# IMPORTANT: Review and customize for production deployments!
+# Current configuration allows full indexing - suitable for demo/development only.
+
+User-agent: *
+Disallow:
+
+# Production Considerations:
+# Consider disallowing sensitive URLs to prevent search engine indexing:
+# Disallow: /login
+# Disallow: /register
+# Disallow: /password/
+# Disallow: /admin/
+# Disallow: /api/
+# Disallow: /dashboard
+# Disallow: /profile
+# Disallow: /_ignition/
+# Disallow: /telescope/
+# Disallow: /horizon/
+
+# Environment-specific handling suggestions:
+# - Use Laravel's environment detection to serve different robots.txt content
+# - Consider creating app/Http/Controllers/RobotsController.php to dynamically generate rules
+# - For staging environments, you might want: Disallow: /
